@@ -12,4 +12,6 @@ dependencies = [
     "pdfplumber>=0.11.8",
     "pymupdf>=1.26.7",
     "tabula>=1.0.5",
+    "langchain-openai>=1.1.10",
+    "langchain-ollama>=0.3.0",
 ]
