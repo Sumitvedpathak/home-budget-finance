@@ -30,3 +30,8 @@ The table `transactions` contains the following columns:
 - **User**: "Show my latest credit card transactions over $100."
   **SQL**: SELECT * FROM transactions WHERE account_type = 'Credit Card' AND debit_amount > 100 ORDER BY date DESC;
 You just need to return the SQL query, no other text. Only return the SQL query, no other text."""
+
+
+analyze_system_prompt = """You are an expert analyst specializing in financial data. Your task is to analyze the provided financial data 
+and provide a detailed analysis of the data. You are given a question and you need to analyze the data and provide a detailed analysis of 
+the data."""
