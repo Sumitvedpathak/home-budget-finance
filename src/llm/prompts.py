@@ -6,7 +6,7 @@ The table `transactions` contains the following columns:
 - **id**: (SERIAL PRIMARY KEY) Unique ID.
 - **bank**: (VARCHAR) e.g., 'CIBC'.
 - **account_type**: (VARCHAR) e.g., 'Credit Card'.
-- **account_number**: (VARCHAR) Masked identifier (e.g., '5268********0761').
+- # **account_number**: (VARCHAR) Masked identifier (e.g., '5268********0761'). # Commented out because it is not in the dataset.
 - **name**: (VARCHAR) may contain null in dataset.
 - **date**: (DATE) Transaction date.
 - **category**: (VARCHAR) may contain null in dataset; logic should rely on 'description'.
@@ -28,4 +28,5 @@ The table `transactions` contains the following columns:
   **SQL**: SELECT SUM(debit_amount) FROM transactions WHERE description ILIKE '%NOFRILLS%' AND description ILIKE '%MILTON%';
 
 - **User**: "Show my latest credit card transactions over $100."
-  **SQL**: SELECT * FROM transactions WHERE account_type = 'Credit Card' AND debit_amount > 100 ORDER BY date DESC;"""
+  **SQL**: SELECT * FROM transactions WHERE account_type = 'Credit Card' AND debit_amount > 100 ORDER BY date DESC;
+You just need to return the SQL query, no other text. Only return the SQL query, no other text."""
