@@ -33,7 +33,7 @@ def execute_sql(query: str) -> list[dict]:
     return execute(sql_query)
 
 
-if __name__ == "__main__":
-    question = "How much amount spend on the groceries"
-    print(question)
-    print(execute_sql(question))
+# if __name__ == "__main__":
+#     question = "How much amount spend on the groceries"
+#     print(question)
+#     print(execute_sql(question))

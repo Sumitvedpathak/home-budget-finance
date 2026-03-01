@@ -11,7 +11,7 @@ def transform_records(records: list[dict], filename: str) -> list[dict]:
         filename: Source filename (e.g. 'cibc-dec.csv') - used to infer bank.
 
     Returns:
-        List of dicts with keys: bank, account_type, account_number, name, date,
+        List of dicts with keys: bank, account_type, # account_number, name, date,
         category, description, debit_amount, credit_amount.
     """
     transformed = []
@@ -27,7 +27,7 @@ def transform_records(records: list[dict], filename: str) -> list[dict]:
             transformed.append(_transform_nbc_record(record))
         elif "walmart" in name:
             transformed.append(_transform_walmart_record(record))
-        insertTransaction(bank=transformed[-1]["bank"], account_type=transformed[-1]["account_type"], account_number=transformed[-1]["account_number"], 
+        insertTransaction(bank=transformed[-1]["bank"], account_type=transformed[-1]["account_type"], # account_number=transformed[-1]["account_number"], 
         name=transformed[-1]["name"], date=transformed[-1]["date"], category=transformed[-1]["category"], description=transformed[-1]["description"], 
         debit_amount=transformed[-1]["debit_amount"], credit_amount=transformed[-1]["credit_amount"])
     return transformed
@@ -38,7 +38,7 @@ def _transform_cibc_record(record: dict) -> dict:
     return {
         "bank": "CIBC",
         "account_type": "Credit Card",
-        "account_number": record.get("Account Number") or record.get("account_number") or None,
+        # "account_number": record.get("Account Number") or record.get("account_number") or None,
         "name": None,
         "date": _parse_date(record.get("Date") or record.get("date")),
         "category": None,
@@ -52,7 +52,7 @@ def _transform_nbc_record(record: dict) -> dict:
     return {
         "bank": "NBC",
         "account_type": "Chequing",
-        "account_number": None,
+        # "account_number": None,
         "name": None,
         "date": _parse_date(record.get("Date") or record.get("date")),
         "category": record.get("Category") or record.get("category") or None,
@@ -73,7 +73,7 @@ def _transform_rbc_record(record: dict) -> dict:
     return {
        "bank": "RBC",
         "account_type": record.get("Account Type") or None,
-        "account_number": record.get("Account Number") or None,
+        # "account_number": record.get("Account Number") or None,
         "name": None,
         "date": _parse_date(record.get("Transaction Date")),
         "category": None,
@@ -93,7 +93,7 @@ def _transform_scotia_record(record: dict) -> dict:
     return {
         "bank": "Scotia",
         "account_type": "Chequing",
-        "account_number": None,
+        # "account_number": None,
         "name": None,
         "date": _parse_date(record.get("Date") or record.get("date")),
         "category": None,
@@ -113,7 +113,7 @@ def _transform_walmart_record(record: dict) -> dict:
     return {
         "bank": "Walmart",
         "account_type": "Credit Card",
-        "account_number": record.get("Transaction Card Number") or None,
+        # "account_number": record.get("Transaction Card Number") or None,
         "name": record.get("Name on Card") or None,
         "date": _parse_date(record.get("Date") or record.get("date")),
         "category": record.get("Merchant Category") or None,

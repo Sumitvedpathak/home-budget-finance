@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
     id SERIAL PRIMARY KEY,
     bank VARCHAR(100),
     account_type VARCHAR(100),
-    account_number VARCHAR(100),
+    # account_number VARCHAR(100),
     name VARCHAR(255),
     date DATE,
     category VARCHAR(255),
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
 
 INSERT_SQL = f"""
 INSERT INTO {TABLE_NAME}
-(bank, account_type, account_number, name, date, category, description, debit_amount, credit_amount)
-VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+(bank, account_type, name, date, category, description, debit_amount, credit_amount)
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
 """
 
 
@@ -76,7 +76,7 @@ def createTable(conn: psycopg.Connection | None = None) -> None:
 def insertTransaction(
     bank: str | None = None,
     account_type: str | None = None,
-    account_number: str | None = None,
+    # account_number: str | None = None,
     name: str | None = None,
     date: str | None = None,
     category: str | None = None,
@@ -97,7 +97,7 @@ def insertTransaction(
         (
             bank,
             account_type,
-            account_number,
+            # account_number,
             name,
             date,
             category,
